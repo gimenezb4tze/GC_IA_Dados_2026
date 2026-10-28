@@ -7,7 +7,6 @@ import requests
 URL_BASE = "https://www.fruityvice.com/api/fruit"
 
 # criando nossa api del Chavo
-
 app = FastAPI(title="Casa de sucos")
 
 
