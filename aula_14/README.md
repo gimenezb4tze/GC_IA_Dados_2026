@@ -27,6 +27,22 @@ A aplicação atua como servidor, expondo rotas para consultar frutas e cadastra
 | venv | Ambiente virtual do projeto |
 | Swagger (OpenAPI) | Documentação e testes dos endpoints |
 
+## Estrutura do projeto
+
+```text
+aula_14/
+├── evidencias/
+│   ├── get_frutas_banana_200.png
+│   ├── get_frutas_invalida_404.png
+│   ├── post_sucos_201.png
+│   ├── post_sucos_fruta_invalida_404.png
+│   └── get_sucos_200.png
+├── .gitignore
+├── casa_sucos_api.py
+├── README.md
+└── requirements.txt
+```
+
 ## Como executar
 
 ### Pré-requisitos
@@ -68,7 +84,7 @@ pip install -r requirements.txt
 py -m uvicorn casa_sucos_api:app --reload
 ```
 
-Em macOS ou Linux, use `python3 -m uvicorn casa_sucos_api:app --reload`.
+**Em macOS ou Linux, use** `python3 -m uvicorn casa_sucos_api:app --reload`.
 
 5. Acesse a documentação interativa em http://127.0.0.1:8000/docs
 
@@ -152,7 +168,7 @@ Os erros retornam uma mensagem no campo `detail`:
 
 ```json
 {
-  "detail": "Não encontrei a fruta 'xyz'. Tente outra (ex: apple, mango, strawberry)."
+  "detail": "Não encontrei a fruta 'tamarindo'. Tente outra (ex: apple, mango, strawberry)."
 }
 ```
 
@@ -188,30 +204,4 @@ GET /sucos (200):
 
 ![GET sucos](evidencias/get_sucos_200.png)
 
-## Estrutura do projeto
-
-```text
-aula_14/
-├── evidencias/
-│   ├── get_frutas_banana_200.png
-│   ├── get_frutas_invalida_404.png
-│   ├── post_sucos_201.png
-│   ├── post_sucos_fruta_invalida_404.png
-│   └── get_sucos_200.png
-├── .gitignore
-├── casa_sucos_api.py
-├── README.md
-└── requirements.txt
-```
-
-A pasta `.venv/` existe apenas localmente e não é enviada ao repositório.
-
-## Uso de IA
-
-Este projeto foi desenvolvido com o apoio do Claude (Anthropic) como ferramenta de estudo: explicações de conceitos, orientações passo a passo, revisão do código e sugestões de documentação. O código e as decisões do projeto foram revisados e testados por mim.
-
-## Autor
-
-Nick Gimenez
-
-Trilha de IA e Dados, GC 26 (aula 14).
+### Trilha de IA e Dados, GC 26 (aula 14).
