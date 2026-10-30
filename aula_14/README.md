@@ -168,7 +168,7 @@ Os erros retornam uma mensagem no campo `detail`:
 
 ```json
 {
-  "detail": "Não encontrei a fruta 'xyz'. Tente outra (ex: apple, mango, strawberry)."
+  "detail": "Não encontrei a fruta 'tamarindo'. Tente outra (ex: apple, mango, strawberry)."
 }
 ```
 
