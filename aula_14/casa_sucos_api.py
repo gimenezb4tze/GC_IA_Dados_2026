@@ -36,14 +36,14 @@ def consultar_fruta(nome: str):
     try:
         resposta = requests.get(f"{URL_BASE}/{fruta}", timeout=10)
 
-    # se não deu para falar com a API (sem internet, timeout...)
+    # se não deu para falar com a API (erro de servidor)
     except requests.exceptions.RequestException:
         raise HTTPException(
             status_code=503,
             detail="Não foi possível consultar a API de frutas agora. Tente novamente em instantes."
         )
 
-    # se o status estiver OK
+    # se tudo funcionou corretamente, o status foi OK
     if resposta.status_code == 200:
         dados = resposta.json()
         nutri = dados["nutritions"]
