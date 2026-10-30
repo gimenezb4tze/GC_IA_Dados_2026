@@ -202,13 +202,21 @@ SELECT
   ROUND((SALARY * 1.15), 2) AS SALARIO_PROJETADO
 FROM HR.EMPLOYEES;
 
+-- essa foi tranquila, só nao sei se arrendondei da maneira correta
+
 ----------------------------------------------------------------
 
 EXERCÍCIO 17 — Tempo de casa
 Nível 4: Desafios avançados
 Mostre o primeiro nome de cada funcionário e quantos anos completos ele tem de empresa, contando desde HIRE_DATE até a data atual.
 
--- Não respondido
+Select  
+    FIRST_NAME,
+    TRUNC(MONTHS_BETWEEN(CURRENT_DATE, HIRE_DATE) / 12) AS ANOS_DE_EMPRESA
+FROM
+    HR.EMPLOYEES
+
+-- Precisei de ajuda de IA nessa, e encontrei varias diferenças de função do sql que aprendi, para o da oracle :P
 
 ----------------------------------------------------------------
 
@@ -216,7 +224,15 @@ EXERCÍCIO 18 — Classificação por salário
 Nível 4: Desafios avançados
 Mostre o primeiro nome, salário e classificação: JÚNIOR para salários menores que 5.000, PLENO de 5.000 a 10.000 (inclusive) e SÊNIOR acima de 10.000. Use CASE.
 
--- Não respondido
+Select first_name, salary, 
+    CASE 
+        WHEN SALARY < 5000 THEN 'JUNIOR'
+        WHEN SALARY >= 5000 AND SALARY <= 10000 THEN 'PLENO'
+        ELSE 'SÊNIOR'
+    END AS classificacao 
+FROM HR.EMPLOYEES
+
+-- foi ate que facil só tinha usado o case errado da primeira vez, consultei IA novamente
 
 ----------------------------------------------------------------
 
@@ -224,14 +240,29 @@ EXERCÍCIO 19 — Lista única de gerentes
 Nível 4: Desafios avançados
 Mostre o primeiro nome e o sobrenome de todos os gerentes da empresa, sem repetir nomes. Considere gerente quem aparece na coluna MANAGER_ID de algum funcionário.
 
--- Não respondido
+SELECT DISTINCT e.FIRST_NAME, e.LAST_NAME
+FROM HR.EMPLOYEES e
+WHERE e.EMPLOYEE_ID IN (
+    SELECT MANAGER_ID
+    FROM HR.EMPLOYEES
+    WHERE MANAGER_ID IS NOT NULL
+);   
 
+-- realmente me desafiou um pouco mas foi ok ate
 ----------------------------------------------------------------
 
 EXERCÍCIO 20 — Maior salário do departamento
 Nível 4: Desafios avançados
 Mostre o primeiro nome, salário e ID do departamento dos funcionários que recebem o maior salário dentro de seu próprio departamento.
 
--- Não respondido
+SELECT FIRST_NAME, SALARY, DEPARTMENT_ID
+FROM HR.EMPLOYEES e
+WHERE SALARY = (
+    SELECT MAX(SALARY)
+    FROM HR.EMPLOYEES
+    WHERE DEPARTMENT_ID = e.DEPARTMENT_ID
+)
 
+-- mesmo comentario de cima, 
+-- Conclusão: passei mais dificuldade com os exercicios de having
 ----------------------------------------------------------------
