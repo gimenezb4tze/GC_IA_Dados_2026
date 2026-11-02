@@ -32,11 +32,13 @@ A aplicação atua como servidor, expondo rotas para consultar frutas e cadastra
 ```text
 aula_14/
 ├── evidencias/
-│   ├── get_frutas_banana_200.png
-│   ├── get_frutas_invalida_404.png
-│   ├── post_sucos_201.png
-│   ├── post_sucos_fruta_invalida_404.png
-│   └── get_sucos_200.png
+│   ├── (teste1)_GET_frutas_status_200.png
+│   ├── (teste2)_GET_frutas_status_404.png
+│   ├── (teste3)_POST_suco_status_201.png
+│   ├── (teste3)_POST_suco_status_201_(2).png
+│   ├── (teste4)_POST_suco_status_404.png
+│   ├── (teste4)POST_suco_status_404_(2).png
+│   └── (teste5)GET_sucos_status_200.png
 ├── .gitignore
 ├── casa_sucos_api.py
 ├── README.md
@@ -98,6 +100,8 @@ py -m uvicorn casa_sucos_api:app --reload
 
 Os nomes das frutas devem ser digitados em inglês (por exemplo: `banana`, `strawberry`, `apple`), pois é o idioma da Fruityvice.
 
+Não foi implementada a tradução automática dos nomes das frutas (português para inglês) por meio de uma API de tradução. Isso se deve à falta de tempo e ao fato de esse requisito não estar claramente descrito na atividade.
+
 ### GET /frutas/{nome}
 
 Consulta uma fruta e devolve somente nome, calorias e açúcar.
@@ -120,9 +124,9 @@ Corpo da requisição:
 
 ```json
 {
-  "nome": "Vitamina Tropical",
-  "frutas": ["banana", "strawberry"],
-  "tem_gosto_de": "Tamarindo"
+  "nome": "Suco Por do sol",
+  "frutas": ["mango", "raspberry"],
+  "tem_gosto_de": "tamarindo"
 }
 ```
 
@@ -131,11 +135,11 @@ Resposta (201 Created):
 ```json
 {
   "id": 1,
-  "nome": "Vitamina Tropical",
-  "frutas": ["banana", "strawberry"],
-  "tem_gosto_de": "Tamarindo",
-  "total_calorias": 125,
-  "total_acucar": 22.6
+  "nome": "Suco Por do sol",
+  "frutas": ["mango", "raspberry"],
+  "tem_gosto_de": "tamarindo",
+  "total_calorias": 113,
+  "total_acucar": 18.1
 }
 ```
 
@@ -147,11 +151,11 @@ Devolve a lista de todos os sucos cadastrados.
 [
   {
     "id": 1,
-    "nome": "Vitamina Tropical",
-    "frutas": ["banana", "strawberry"],
-    "tem_gosto_de": "Tamarindo",
-    "total_calorias": 125,
-    "total_acucar": 22.6
+    "nome": "Suco Por do sol",
+    "frutas": ["mango", "raspberry"],
+    "tem_gosto_de": "tamarindo",
+    "total_calorias": 113,
+    "total_acucar": 18.1
   }
 ]
 ```
@@ -186,22 +190,30 @@ Testes realizados pelo Swagger (`/docs`).
 
 GET /frutas/banana (200):
 
-![GET fruta existente](evidencias/get_frutas_banana_200.png)
+![GET fruta existente](evidencias/%28teste1%29_GET_frutas_status_200.png)
 
-GET /frutas/xyz (404):
+GET /frutas/tamarindo (404):
 
-![GET fruta inexistente](evidencias/get_frutas_invalida_404.png)
+![GET fruta inexistente](evidencias/%28teste2%29_GET_frutas_status_404.png)
 
-POST /sucos (201):
+POST /sucos (201), requisição enviada:
 
-![POST suco](evidencias/post_sucos_201.png)
+![POST suco, requisição](evidencias/%28teste3%29_POST_suco_status_201.png)
 
-POST /sucos com fruta inválida (404, nada é salvo):
+POST /sucos (201), resposta:
 
-![POST com fruta inválida](evidencias/post_sucos_fruta_invalida_404.png)
+![POST suco, resposta](evidencias/%28teste3%29_POST_suco_status_201_%282%29.png)
+
+POST /sucos com fruta inválida (404, nada é salvo), requisição enviada:
+
+![POST com fruta inválida, requisição](evidencias/%28teste4%29_POST_suco_status_404.png)
+
+POST /sucos com fruta inválida (404, nada é salvo), resposta:
+
+![POST com fruta inválida, resposta](evidencias/%28teste4%29POST_suco_status_404_%282%29.png)
 
 GET /sucos (200):
 
-![GET sucos](evidencias/get_sucos_200.png)
+![GET sucos](evidencias/%28teste5%29GET_sucos_status_200.png)
 
 ### Trilha de IA e Dados, GC 26 (aula 14).
