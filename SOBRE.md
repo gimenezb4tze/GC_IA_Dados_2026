@@ -1,6 +1,6 @@
 <p align="center">
   <img 
-    src="imagens/banner.png" 
+    src="imagens/banner.jpg" 
     alt="Geração Caldeira 2026 - IA & Dados"
     width="100%"
   />
